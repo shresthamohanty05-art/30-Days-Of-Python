@@ -56,27 +56,43 @@ print(company.index('F'))
 # 22. Use rfind to determine the position of the last occurrence of l in Coding For All People.
 print(company.rfind('l'))
 # 23. Use index or find to find the position of the first occurrence of the word 'because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
+sen = "you cannot end a sentence with because because because is a conjunction"
+print(sen.index("because"))
+
 # 24. Use rindex to find the position of the last occurrence of the word because in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
+print(sen.rindex("because"))
+
 # 25. Slice out the phrase 'because because because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
+s1 = sen[:31]+ sen[54:]
+print(s1)
 # 26. Find the position of the first occurrence of the word 'because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
+print(sen.index("because"))
 # 27. Slice out the phrase 'because because because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
 # 28. Does 'Coding For All' start with a substring _Coding_?
+print(phrase.startswith("Coding"))
 # 29. Does 'Coding For All' end with a substring _coding_?
+print(phrase.endswith("Coding"))
 # 30. '&nbsp;&nbsp; Coding For All &nbsp;&nbsp;&nbsp; &nbsp;' &nbsp;, remove the left and right trailing spaces in the given string.
+
 # 31. Which one of the following variables return True when we use the method isidentifier():
 #     - 30DaysOfPython
 #     - thirty_days_of_python
+print("30DaysOfPython".isidentifier())
+print("thirty_days_of_python".isidentifier())
 # 32. The following list contains the names of some of python libraries: ['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']. Join the list with a hash with space string.
 # 33. Use the new line escape sequence to separate the following sentences.
 #     ```py
 #     I am enjoying this challenge.
 #     I just wonder what is next.
 #     ```
+print("I am enjoying this challenge \n i wonder what is next")
 # 34. Use a tab escape sequence to write the following lines.
 #     ```py
 #     Name      Age     Country   City
 #     Asabeneh  250     Finland   Helsinki
 #     ```
+print("Name\t\tAge\tCountry\t\tCity")
+print("Asabeneh\t250\tFinland\t\tHelsinki")
 # 35. Use the string formatting method to display the following:
 
 # ```sh
@@ -85,6 +101,11 @@ print(company.rfind('l'))
 # The area of a circle with radius 10 is 314 meters square.
 # ```
 
+radius = 10
+area = 3.14*radius**2
+print(f"Radius: {radius}")
+print(f"Area = {area} " )
+print(f"The area of a circle with radius {radius} is {area} meters square")
 # 36. Make the following using string formatting methods:
 
 # ```sh
@@ -96,3 +117,13 @@ print(company.rfind('l'))
 # 8 // 6 = 1
 # 8 ** 6 = 262144
 # ```
+a = 8
+b = 6
+
+print(f"{a} + {b} = {a + b}")
+print(f"{a} - {b} = {a - b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b:.2f}")
+print(f"{a} % {b} = {a % b}")
+print(f"{a} // {b} = {a // b}")
+print(f"{a} ** {b} = {a ** b}")
