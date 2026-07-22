@@ -193,9 +193,69 @@ print(sum_of_even(100))
 # ```
 
 # 1. Call your function factorial, it takes a whole number as a parameter and it return a factorial of the number
+def factorial(num):
+   if num==1 or num==0:
+      return 1
+   return num*factorial(num-1)
 
+print(factorial(5))
 # 1. Call your function _is_empty_, it takes a parameter and it checks if it is empty or not
+def is_empty(p):
+   if len(p) == 0:
+      return True
+   else:
+      return False
+   
+P=[]
+print(is_empty(P))
 # 1. Write different functions which take lists. They should calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std (standard deviation).
+def calculate_mean(l):
+   mean = sum(l)/len(l)
+   return mean
+
+print(calculate_mean([1,2,3,4,5]))
+
+def calculate_median(l):
+   l.sort()
+   n = len(l)
+
+   if n%2 !=0:
+      return l[n//2]
+   else:
+      return (l[n//2 -1]+l[n//2])/2
+print(calculate_median([1,2,3,4,5]))
+
+
+def calculate_mode(lst):
+    freq = {}
+
+    for num in lst:
+        freq[num] = freq.get(num, 0) + 1
+
+    mode = max(freq, key=freq.get)
+
+    return {'mode': mode, 'count': freq[mode]}
+
+print(calculate_mode([2, 3, 5, 6, 2, 3, 3, 8]))
+
+
+def range(lst):
+   return max(lst) - min(lst) 
+
+print(range([1, 2, 3, 4, 5]))
+
+def calculate_variance(lst):
+   mean = calculate_mean(lst)
+
+   total =0
+
+   for num in lst:
+      total += (mean-num)**2
+   
+   var = total/len(lst)
+   return var
+
+print(calculate_variance([2, 4, 6, 8]))
 # 1. Write a function called _greet_ which takes a default argument, _name_. If no argument is supplied it should print "Hello, Guest!", otherwise it should greet the person by name.
 
 # ```py
@@ -204,6 +264,13 @@ print(sum_of_even(100))
 #     greet("Alice")
 #     # "Hello, Alice!"
 # ```
+
+def greet(name='Guest'):
+   print(f'Hello, {name}!')
+
+greet()
+greet("shrestha")
+
 # 1. Create a function called _show_args_ to take an arbitrary number of named arguments and print their names and values.
 #    ```py
 #    show_args(name="Alice", age=30, city="New York")
