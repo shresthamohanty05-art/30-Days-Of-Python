@@ -159,6 +159,7 @@ print(two_power_of_five)  # 32
    ```py
    numbers = [-4, -3, -2, -1, 0, 2, 4, 6]
    ```
+  
 2. Flatten the following list of lists of lists to a one dimensional list :
 
    ```py
