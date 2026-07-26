@@ -239,10 +239,10 @@ def calculate_mode(lst):
 print(calculate_mode([2, 3, 5, 6, 2, 3, 3, 8]))
 
 
-def range(lst):
+def range_u(lst):
    return max(lst) - min(lst) 
 
-print(range([1, 2, 3, 4, 5]))
+print(range_u([1, 2, 3, 4, 5]))
 
 def calculate_variance(lst):
    mean = calculate_mean(lst)
@@ -279,14 +279,81 @@ greet("shrestha")
 #    # Received: name: Bob, pet: Fluffy, the bunny
 #    ```
 
+def show_args(**kwargs):
+   print(kwargs)
+
+show_args(name="Alice", age=30, city="New York")
+
 
 # ### Exercises: Level 3
 
 # 1. Write a function called is_prime, which checks if a number is prime.
-# 1. Write a functions which checks if all items are unique in the list.
-# 1. Write a function which checks if all the items of the list are of the same data type.
-# 1. Write a function which check if provided variable is a valid python variable
-# 1. Go to the data folder and access the countries-data.py file.
+def is_prime(num):
+   if num<2 :
+      return False
+   
+   for i in range(2, int(num**0.5) + 1):
+      if num%i ==0 :
+         return False
 
+   return True
+
+print(is_prime(7))
+
+
+# 1. Write a functions which checks if all items are unique in the list.
+def unique_items(lst):
+    for i in lst:
+       if lst.count(i) > 1:
+          return False
+    return True
+print(unique_items([1, 2, 6, 9, 4, 7, 3]))
+# 1. Write a function which checks if all the items of the list are of the same data type.
+def check(lst):
+   first_type = type(lst[0])
+
+   for item in lst:
+      if type(item) != first_type:
+         return False
+
+   return True
+
+print(check([1, 4, 8, "Harry"]))
+
+
+# 1. Write a function which check if provided variable is a valid python variable
+def is_valid_variable(variable):
+    return variable.isidentifier()
+
+print(is_valid_variable("first_name"))     # True
+print(is_valid_variable("first-name"))     # False
+print(is_valid_variable("123name"))        # False
+print(is_valid_variable("_age"))           # True
+print(is_valid_variable("for"))            # True
+
+# 1. Go to the data folder and access the countries-data.py file.
+from countries_data import countries_data
+
+from collections import Counter
 # - Create a function called the most_spoken_languages in the world. It should return 10 or 20 most spoken languages in the world in descending order
+def most_spoken_languages(n):
+    language_count = Counter()
+
+    for country in countries_data:
+        language_count.update(country["languages"])
+
+    return language_count.most_common(n)
+
+print(most_spoken_languages(10))
 # # - Create a function called the most_populated_countries. It should return 10 or 20 most populated countries in descending order.
+def most_populated_countries(n):
+    countries = []
+
+    for country in countries_data:
+        countries.append((country["name"], country["population"]))
+
+    countries.sort(key=lambda x: x[1], reverse=True)
+
+    return countries[:n]
+
+print(most_populated_countries(10))
