@@ -35,6 +35,8 @@ print(flat)
 #    (10, 1, 10, 100, 1000, 10000, 100000)]
 #    ```
 
+n = [(i, i**0 , i**1, i**2, i**3, i**4, i**5) for i in range(11)]
+print(n)
 
 # 4. Flatten the following list to a new list:
 #    ```py
@@ -76,6 +78,18 @@ print(result)
 #    output
 #    ['Asabeneh Yetaeyeh', 'David Smith', 'Donald Trump', 'Bill Gates']
 #    ```
+names = [[('Asabeneh', 'Yetayeh')], [('David', 'Smith')], [('Donald', 'Trump')], [('Bill', 'Gates')]]
+result1 = [f"{first} {second}" for a in names for first, second in a]
+print(result1)
+
 # 7. Write a lambda function which can solve a slope or y-intercept of linear functions.
+
+slope = lambda x1, x2, y1, y2: (y2 - y1) / (x2 - x1)
+
+print(slope(1, 2, 3, 4))
+
+y_intercept = lambda x, y, m: y - m * x
+
+print(y_intercept(1, 3, 1))
 
 # 🎉 CONGRATULATIONS ! 🎉
