@@ -88,7 +88,8 @@ def higher_order_function(type): # a higher order function returning a function
     elif type == 'absolute':
         return absolute
 
-result = higher_order_function('square')
+result = higher_order_function('square') 
+#result becomes the square function
 print(result(3))       # 9
 result = higher_order_function('cube')
 print(result(3))       # 27
@@ -232,6 +233,8 @@ print(list(numbers_squared))    # [1, 4, 9, 16, 25]
 numbers_squared = map(lambda x : x ** 2, numbers)
 print(list(numbers_squared))    # [1, 4, 9, 16, 25]
 ```
+
+
 
 **Example:2**
 
