@@ -83,15 +83,72 @@ def sum_num(sum_u, num):
 sum_of_num = reduce(sum_num, numbers)
 print(sum_of_num)
 # 1. Use reduce to concatenate all the countries and to produce this sentence: Estonia, Finland, Sweden, Denmark, Norway, and Iceland are north European countries
+def one_line(acc, coun):
+    return acc + ", " + coun
 
+ls = reduce(one_line, countries[:-1]) + " and " + countries[-1] + " are north European countries"
+print(ls)
 # 1. Declare a function called categorize_countries that returns a list of countries with some common pattern (you can find the [countries list](https://github.com/Asabeneh/30-Days-Of-Python/blob/master/data/countries.py) in this repository as countries.js(eg 'land', 'ia', 'island', 'stan')).
-# 1. Create a function returning a dictionary, where keys stand for starting letters of countries and values are the number of country names starting with that letter.
-# 2. Declare a get_first_ten_countries function - it returns a list of first ten countries from the countries.js list in the data folder.
-# 1. Declare a get_last_ten_countries function that returns the last ten countries in the countries list.
+def categorize_countries(countries, pattern):
+    return [country for country in countries if pattern.lower() in country.lower()]
 
+countries = ['India' , 'Pakistan' , 'Iceland' , 'Ireland' , 'Finland'] 
+print(categorize_countries(countries, 'land'))
+# 1. Create a function returning a dictionary, where keys stand for starting letters of countries and values are the number of country names starting with that letter.
+def count_by_starting_letter(countries):
+    result = {}
+    
+    for country in countries:
+        first_letter = country[0].upper()
+        result[first_letter] = result.get(first_letter, 0) + 1
+    
+    return result
+
+print(count_by_starting_letter(countries))
+# 2. Declare a get_first_ten_countries function - it returns a list of first ten countries from the countries.js list in the data folder.
+def first_ten_countries(country):
+    return country[:10]
+# 1. Declare a get_last_ten_countries function that returns the last ten countries in the countries list.
+def last_ten_countries(country):
+    return country[-10:]
 # ### Exercises: Level 3
 
 # 1. Use the countries_data.py (https://github.com/Asabeneh/30-Days-Of-Python/blob/master/data/countries-data.py) file and follow the tasks below:
+from countries_data import countryy 
+
+
 #    - Sort countries by name, by capital, by population
+sorted_by_capital = sorted(countries, key=lambda x: x['capital'] if x['capital'] else "")
+print(sorted_by_capital)
 #    - Sort out the ten most spoken languages by location.
+from countries_data import countries
+from collections import Counter
+
+def most_spoken_languages(countries, top_n=10):
+    all_languages = []
+
+    for country in countries:
+        all_languages.extend(country['languages'])
+
+    counter = Counter(all_languages)
+    return counter.most_common(top_n)
+
+
+# Call function
+result = most_spoken_languages(countries)
+
+for lang, count in result:
+    print(lang, count)
 #    - Sort out the ten most populated countries.
+from collections import Counter
+
+def most_spoken_languages(countries):
+    lang_list = []
+    
+    for country in countries:
+        lang_list.extend(country['languages'])
+    
+    counter = Counter(lang_list)
+    return counter.most_common(10)
+
+print(most_spoken_languages(countries))
